@@ -12,5 +12,8 @@ public class DBConstant {
     public static final String PROPERTIES_DB_USER = "db.user";
     public static final String PROPERTIES_DB_IP = "db.ip";
     public static final String PROPERTIES_DB_PORT = "db.port";
-    public final static String BASE_PACKAGE_NAME = "com.greencode.hooconservice";
+    public static final String BASE_PACKAGE_NAME = "com.greencode.hooconservice";
+
+
+    public static final String USER_COLLECTION = "User";
 }
