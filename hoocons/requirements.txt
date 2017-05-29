@@ -1,0 +1,32 @@
+-e git+https://github.com/django-nonrel/django.git@nonrel-1.6#egg=Django
+-e git+https://github.com/django-nonrel/mongodb-engine.git@master#egg=django_mongodb_engine
+-e git+https://github.com/django-nonrel/djangotoolbox.git@master#egg=djangotoolbox
+
+fabric
+django-extensions
+
+django-appconf
+django-contrib-comments
+
+markdown
+pygments
+django-pagedown
+
+# django rest framework
+djangorestframework
+django-filter
+
+# for bcrypt passwords
+# bcrypt
+
+# Templates
+django_compressor
+
+# Documentation
+Sphinx
+
+# Testing
+mock
+
+# Database
+mongoengine
