@@ -1,6 +1,7 @@
 -e git+https://github.com/django-nonrel/django.git@nonrel-1.6#egg=Django
 -e git+https://github.com/django-nonrel/mongodb-engine.git@master#egg=django_mongodb_engine
 -e git+https://github.com/django-nonrel/djangotoolbox.git@master#egg=djangotoolbox
+-e git+https://github.com/django-nonrel/django@nonrel-1.5
 
 fabric
 django-extensions
@@ -18,9 +19,14 @@ django-filter
 
 # for bcrypt passwords
 # bcrypt
+Pygments
+requests
 
 # Templates
 django_compressor
+djangorestframework
+markdown
+django-filter
 
 # Documentation
 Sphinx
