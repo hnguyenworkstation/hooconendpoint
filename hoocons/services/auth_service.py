@@ -1,8 +1,8 @@
 from django.views.decorators.csrf import csrf_exempt, requires_csrf_token
 from rest_framework import status
 from rest_framework.decorators import api_view
-from rest_framework.response import Response
 from serializers.user_serializer import UserSerializer
+from rest_framework.response import Response
 
 
 @api_view(['POST'])

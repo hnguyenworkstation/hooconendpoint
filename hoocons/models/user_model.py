@@ -59,7 +59,7 @@ class User(Document):
             "location": self.location,
             "last_online": str(self.last_online),
             "friends": [user.get_simple() for user in self.friends],
-            "friends_pendding": [user.get_simple() for user in self.friends_pending],
+            "friends_pending": [user.get_simple() for user in self.friends_pending],
             "friends_request": [user.get_simple() for user in self.friends_request],
             "friends_ignore": [user.get_simple() for user in self.friends_ignore]
         }

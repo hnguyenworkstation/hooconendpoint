@@ -1,8 +1,6 @@
 from rest_framework import serializers
 from models.user_model import User
-from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.response import Response
 
 
 class UserSerializer(serializers.Serializer, IsAuthenticated):
@@ -12,9 +10,9 @@ class UserSerializer(serializers.Serializer, IsAuthenticated):
 
     def create(self, validated_data):
         """
-        Create and return a new `User` instance, given the validated data.
+        Create user and getting token
         """
-        user = User(phone_number=validated_data.phone_number, password=validated_data.password)
+        user = User(phone_number=validated_data['phone_number'], password=validated_data['password'])
         user.save()
         return user
 
