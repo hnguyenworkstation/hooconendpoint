@@ -34,5 +34,8 @@ Sphinx
 # Testing
 mock
 
+# Security
+djangorestframework-jwt
+
 # Database
 mongoengine
