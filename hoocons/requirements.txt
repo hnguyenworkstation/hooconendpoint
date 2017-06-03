@@ -2,6 +2,7 @@
 -e git+https://github.com/django-nonrel/mongodb-engine.git@master#egg=django_mongodb_engine
 -e git+https://github.com/django-nonrel/djangotoolbox.git@master#egg=djangotoolbox
 -e git+https://github.com/django-nonrel/django@nonrel-1.5
+-e git+https://github.com/MongoEngine/django-mongoengine.git@master#egg=django_mongoengine
 
 fabric
 django-extensions
@@ -25,8 +26,11 @@ requests
 # Templates
 django_compressor
 djangorestframework
+django-rest-framework-mongoengine
 markdown
 django-filter
+
+blinker
 
 # Documentation
 Sphinx

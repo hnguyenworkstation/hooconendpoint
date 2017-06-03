@@ -1,8 +1,9 @@
 from django.conf.urls import url, include
 from django.contrib import admin
-from rest_framework import routers, serializers, viewsets
-from rest_framework_jwt.views import obtain_jwt_token, refresh_jwt_token, verify_jwt_token
+from rest_framework import routers
+from rest_framework_jwt.views import obtain_jwt_token
 from services.auth_service import register
+from services.user_service import *
 
 # Routers provide an easy way of automatically determining the URL conf.
 router = routers.DefaultRouter()
@@ -12,6 +13,9 @@ router = routers.DefaultRouter()
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^', include(router.urls)),
+    url(r'^token/simple', obtain_jwt_token),
+
+    # USER LINK SERVICES
     url(r'^api/register', register, name='register'),
-    url(r'^token/simple', obtain_jwt_token)
+    url(r'^api/check/phone_number', check_phone_availability, name='check_phone_availability')
 ]

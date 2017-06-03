@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 """
 
 import os
+import rest_framework_mongoengine
 import mongoengine
 from datetime import *
 
@@ -31,7 +32,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,9 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_mongoengine'
+    'mongoengine.django.mongo_auth',
     'rest_framework',
     'rest_framework.authtoken',
     'rest_framework_jwt',
+    'rest_framework_mongoengine',
     'services',
     'models',
     'serializers',
@@ -50,15 +53,17 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
+
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.IsAdminUser',
         'rest_framework.permissions.IsAuthenticated',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
-        'rest_framework.authentication.SessionAuthentication',
         'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+    ],
+    'DEFAULT_PARSER_CLASSES': [
+        'rest_framework.parsers.JSONParser',
     ],
     'PAGE_SIZE': 10
 }
@@ -115,9 +120,15 @@ _MONGODB_DATABASE_HOST = \
     % (_MONGODB_USER, _MONGODB_PASSWD, _MONGODB_HOST, _MONGODB_PORT, _MONGODB_NAME)
 mongoengine.connect(_MONGODB_NAME, host=_MONGODB_DATABASE_HOST)
 
+MONGOENGINE_USER_DOCUMENT = 'models.user_model.User'
+AUTH_USER_MODEL = 'mongo_auth.MongoUser'
+
 AUTHENTICATION_BACKENDS = (
     'mongoengine.django.auth.MongoEngineBackend',
 )
+
+SESSION_ENGINE = 'mongoengine.django.sessions'
+SESSION_SERIALIZER = 'mongoengine.django.sessions.BSONSerializer'
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
@@ -155,8 +166,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
 STATIC_URL = '/static/'
 
-
-
 ## JWT Configuration
 JWT_AUTH = {
     'JWT_ENCODE_HANDLER':
@@ -191,5 +200,4 @@ JWT_AUTH = {
 
     'JWT_AUTH_HEADER_PREFIX': 'JWT',
     'JWT_AUTH_COOKIE': None,
-
 }
